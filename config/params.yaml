@@ -1,0 +1,37 @@
+simulator:
+  ros__parameters:
+    map_file: ''            # 空なら share/mini_nav/maps/simple_room.txt
+    map_cell_size: 0.5      # ASCII 地図の 1 文字 [m]
+    map_resolution: 0.05    # 占有格子の解像度 [m/cell]
+    initial_x: 1.0
+    initial_y: 1.5
+    initial_yaw: 0.0
+    robot_radius: 0.18
+    scan_num_beams: 360
+    scan_max_range: 8.0
+    scan_noise_std: 0.01
+    scan_rate: 10.0
+    sim_rate: 50.0
+    cmd_vel_timeout: 0.5
+    publish_map: true
+    publish_map_to_odom: true
+
+planner:
+  ros__parameters:
+    robot_radius: 0.18      # simulator と合わせる
+    inflation_radius: 0.5   # この距離まで壁際にコストを付ける
+    cost_weight: 3.0        # 大きいほど通路の中央を通りたがる
+    occupied_threshold: 50
+    unknown_is_obstacle: false
+
+controller:
+  ros__parameters:
+    lookahead_distance: 0.5
+    max_linear_speed: 0.4
+    max_angular_speed: 1.5
+    goal_tolerance: 0.1
+    slow_down_radius: 0.6
+    rotate_in_place_angle_deg: 60.0
+    stop_distance: 0.35
+    front_angle_deg: 30.0
+    control_rate: 20.0
